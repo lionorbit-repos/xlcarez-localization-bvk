@@ -1,0 +1,1650 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name BiosenseSignal
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import AVFoundation
+@_exported import BiosenseSignal
+import CoreBluetooth
+import CoreMedia
+import CoreMotion
+import CryptoKit
+import Foundation
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignSDNN) @objcMembers public class VitalSignSDNN : BiosenseSignal.VitalSignInt {
+  @objc final public let confidence: BiosenseSignal.VitalSignConfidence?
+  @objc deinit
+}
+extension CoreBluetooth.CBManagerState : BiosenseSignal.BIOCustomStringConvertible {
+  public var bioDescription: Swift.String {
+    get
+  }
+}
+@objc(BIOAlertData) public protocol AlertData {
+  @objc var domain: Swift.String { get }
+  @objc var code: Swift.Int { get }
+  @objc var additionalInfo: [Swift.String : Any] { get }
+}
+@_hasMissingDesignatedInitializers @objc(BIOLicenseInfo) @objcMembers public class LicenseInfo : ObjectiveC.NSObject {
+  @objc final public let licenseActivationInfo: BiosenseSignal.LicenseActivationInfo
+  @objc final public let licenseOfflineMeasurements: BiosenseSignal.LicenseOfflineMeasurements?
+  @objc deinit
+}
+@objc(BIOWellnessLevel) public enum WellnessLevel : Swift.Int {
+  case unknown
+  case low
+  case medium
+  case high
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension BiosenseSignal.WellnessLevel : BiosenseSignal.BIOCustomStringConvertible {
+  public var bioDescription: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignWellnessIndex) @objcMembers public class VitalSignWellnessIndex : BiosenseSignal.VitalSignInt {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOMeasurementInfo) @objcMembers public class MeasurementInfo : ObjectiveC.NSObject {
+  @objc public var measurementFolderName: Swift.String? {
+    @objc get
+  }
+  @objc public var sessionFolderPath: Swift.String? {
+    @objc get
+  }
+  @objc deinit
+}
+@objc(BIOCoreMessageType) public enum CoreMessageType : Swift.Int {
+  case pulseRate
+  case respirationRate
+  case oxygenSaturation
+  case bloodPressure
+  case error
+  case warning
+  case reset
+  case done
+  case snr
+  case pai
+  case ambience
+  case fallDetection
+  case activityLevel
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension BiosenseSignal.CoreMessageType : BiosenseSignal.BIOCustomStringConvertible {
+  public var bioDescription: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignSNSIndex) @objcMembers public class VitalSignSNSIndex : BiosenseSignal.VitalSignDouble {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOPpgData) @objcMembers public class PPGData : ObjectiveC.NSObject {
+  @objc final public let timestamp: Swift.Double
+  @objc final public let ppgValues: [Swift.Double]
+  @objc final public let ambient: Swift.Double
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignHighHemoglobinA1CRisk) @objcMembers public class VitalSignHighHemoglobinA1CRisk : ObjectiveC.NSObject, BiosenseSignal.VitalSign {
+  @objc public var type: BiosenseSignal.VitalSignType {
+    get
+  }
+  @objc final public let value: BiosenseSignal.HighHemoglobinA1CRisk
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(BIOAlertCodes) @objcMembers public class AlertCodes : ObjectiveC.NSObject {
+  @objc public static let deviceLowPowerModeEnabledError: Swift.Int
+  @objc public static let deviceMinimumBatteryLevelError: Swift.Int
+  @objc public static let deviceClockSkewError: Swift.Int
+  @objc public static let deviceBluetoothIsOffError: Swift.Int
+  @objc public static let deviceBluetoothMissingPermissionsError: Swift.Int
+  @objc public static let deviceLocationIsOffError: Swift.Int
+  @objc public static let cameraNoCameraError: Swift.Int
+  @objc public static let cameraCameraOpenError: Swift.Int
+  @objc public static let cameraCameraMissingPermissionsError: Swift.Int
+  @objc public static let cameraUnexpectedImageDimensionsWarning: Swift.Int
+  @objc public static let licenseActivationLimitReachedError: Swift.Int
+  @objc public static let licenseMeterAttributeUsesLimitReachedError: Swift.Int
+  @objc public static let licenseAuthenticationFailedError: Swift.Int
+  @objc public static let licenseInvalidLicenseKeyError: Swift.Int
+  @objc public static let licenseRevokedLicenseError: Swift.Int
+  @objc public static let licenseInternalError9: Swift.Int
+  @objc public static let licenseLicenseExpiredError: Swift.Int
+  @objc public static let licenseLicenseSuspendedError: Swift.Int
+  @objc public static let licenseNetworkIssuesError: Swift.Int
+  @objc public static let licenseSslHandshakeError: Swift.Int
+  @objc public static let licenseInputLicenseKeyEmptyError: Swift.Int
+  @objc public static let licenseInputProductIdIllegalError: Swift.Int
+  @objc public static let licenseCannotOpenFileForReadError: Swift.Int
+  @objc public static let licenseMonthlyUsageTrackingRequiresSyncError: Swift.Int
+  @objc public static let licenseSslHandshakeDeviceDateError: Swift.Int
+  @objc public static let licenseSslHandshakeCertificateExpiredError: Swift.Int
+  @objc public static let licenseMinSdkError: Swift.Int
+  @objc public static let licenseNetworkTimeoutError: Swift.Int
+  @objc public static let licenseMonitoringDisabledError: Swift.Int
+  @objc public static let measurementMisdetectionDurationExceedsLimitError: Swift.Int
+  @objc public static let measurementInvalidRecentDetectionRateError: Swift.Int
+  @objc public static let measurementLicenseActivationFailedError: Swift.Int
+  @objc public static let measurementInvalidMeasurementAverageDetectionRateError: Swift.Int
+  @objc public static let measurementTooManyFramesInorderError: Swift.Int
+  @objc public static let measurementMisdetectionDurationExceedsLimitWarning: Swift.Int
+  @objc public static let measurementInvalidRecentFPSRateWarning: Swift.Int
+  @objc public static let measurementMeasurementMisplacedFrameWarning: Swift.Int
+  @objc public static let vitalSignBloodPressureProcessingFailedWarning: Swift.Int
+  @objc public static let vitalSignMeasuringWithNoEnabledVitalSignsWarning: Swift.Int
+  @objc public static let sessionIllegalStartCallError: Swift.Int
+  @objc public static let sessionIllegalStopCallError: Swift.Int
+  @objc public static let initializationInvalidProcessingTimeError: Swift.Int
+  @objc public static let initializationRotationAndOrientationMismatch: Swift.Int
+  @objc public static let initializationInvalidLicenseFormat: Swift.Int
+  @objc public static let initializationSdkLoadFailure: Swift.Int
+  @objc public static let initializationUnsupportedUserWeight: Swift.Int
+  @objc public static let initializationUnsupportedUserAge: Swift.Int
+  @objc public static let initializationConcurrentSessionsError: Swift.Int
+  @objc public static let initializationMissingPolarDependenciesError: Swift.Int
+  @objc public static let initializationMissingAnalyticsDependenciesError: Swift.Int
+  @objc public static let initializationUnsupportedUserHeight: Swift.Int
+  @objc public static let ppgDeviceConnectionTimeoutError: Swift.Int
+  @objc public static let ppgDeviceInvalidDeviceIdError: Swift.Int
+  @objc public static let ppgDeviceUnsupportedFirmwareVersionError: Swift.Int
+  @objc public static let ppgDeviceUnsupportedDeviceModelError: Swift.Int
+  @objc public static let ppgDeviceConnectionError: Swift.Int
+  @objc public static let ppgDeviceMisplacementError: Swift.Int
+  @objc public static let ppgDeviceNotOnBodyWarning: Swift.Int
+  @objc public static let monitoringStoppedError: Swift.Int
+  @objc public static let monitoringDataGapExceedsLimitWarning: Swift.Int
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOFaceSessionBuilder) @objcMembers public class FaceSessionBuilder : BiosenseSignal.SessionBuilder {
+  public var deviceOrientation: BiosenseSignal.DeviceOrientation? {
+    get
+  }
+  @objc public var userInformation: BiosenseSignal.UserInformation? {
+    get
+  }
+  @objc public init()
+  @objc public func withDetectionAlwaysOn(_ detectionOn: Swift.Bool) -> BiosenseSignal.FaceSessionBuilder
+  @objc public func withDeviceOrientation(_ orientation: BiosenseSignal.DeviceOrientation) -> BiosenseSignal.FaceSessionBuilder
+  @objc @available(*, deprecated, message: "Use `withUserInformation()` instead.")
+  public func withSubjectDemographic(_ demographic: BiosenseSignal.SubjectDemographic) -> BiosenseSignal.FaceSessionBuilder
+  @objc public func withUserInformation(_ userInformation: BiosenseSignal.UserInformation) -> BiosenseSignal.FaceSessionBuilder
+  @objc public func withImageFormatMode(_ imageFormatMode: BiosenseSignal.ImageFormatMode) -> BiosenseSignal.FaceSessionBuilder
+  @objc public func withStrictMeasurementGuidance(_ strictMeasurementGuidance: Swift.Bool) -> BiosenseSignal.FaceSessionBuilder
+  @objc public func withCameraLocation(_ cameraLocation: BiosenseSignal.CameraLocation) -> BiosenseSignal.FaceSessionBuilder
+  @objc override public func build(licenseDetails: BiosenseSignal.LicenseDetails) throws -> any BiosenseSignal.Session
+  @objc deinit
+}
+@objc(BIOSex) public enum Sex : Swift.Int {
+  case unspecified
+  case male
+  case female
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(BIOLowHemoglobinRisk) public enum LowHemoglobinRisk : Swift.Int {
+  case unknown
+  case low
+  case medium
+  case high
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension BiosenseSignal.LowHemoglobinRisk : BiosenseSignal.BIOCustomStringConvertible {
+  public var bioDescription: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignSD1) @objcMembers public class VitalSignSD1 : BiosenseSignal.VitalSignInt {
+  @objc deinit
+}
+@objc(BIOLogsListener) public protocol LogsListener {
+  @objc func onLogsReady(logsInfo: BiosenseSignal.LogsInfo)
+}
+@available(*, deprecated, message: "Use `UserInformation` instead.")
+@objc(BIOSubjectDemographic) @objcMembers public class SubjectDemographic : ObjectiveC.NSObject {
+  @objc final public let sex: BiosenseSignal.Sex
+  @objc final public let age: Foundation.NSNumber?
+  @objc final public let weight: Foundation.NSNumber?
+  @objc final public let height: Foundation.NSNumber?
+  @objc @available(*, deprecated)
+  public init(sex: BiosenseSignal.Sex = .unspecified, age: Foundation.NSNumber?, weight: Foundation.NSNumber?)
+  @objc public init(sex: BiosenseSignal.Sex = .unspecified, age: Foundation.NSNumber? = nil, weight: Foundation.NSNumber? = nil, height: Foundation.NSNumber? = nil)
+  @objc deinit
+}
+@objc(BIOCoreLicenseMessageDelegate) public protocol CoreLicenseMessageDelegate {
+  @objc func licenseMessage(_ licenseMessage: BiosenseSignal.LicenseMessage)
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignSNSZone) @objcMembers public class VitalSignSNSZone : ObjectiveC.NSObject, BiosenseSignal.VitalSign {
+  @objc public var type: BiosenseSignal.VitalSignType {
+    get
+  }
+  @objc final public let value: BiosenseSignal.SNSZone
+  @objc deinit
+}
+extension BiosenseSignal.VitalSignSNSZone : BiosenseSignal.BIOCustomStringConvertible {
+  @objc dynamic public var bioDescription: Swift.String {
+    @objc get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignNormalizedStressIndex) @objcMembers public class VitalSignNormalizedStressIndex : BiosenseSignal.VitalSignInt {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignMeanRRI) @objcMembers public class VitalSignMeanRRI : BiosenseSignal.VitalSignInt {
+  @objc final public let confidence: BiosenseSignal.VitalSignConfidence?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(BIOEnabledVitalSigns) @objcMembers public class EnabledVitalSigns : ObjectiveC.NSObject {
+  @objc final public let enabledVitalSigns: BiosenseSignal.VitalSignType
+  @objc override dynamic public init()
+  @objc public init(enabledVitalSigns: BiosenseSignal.VitalSignType)
+  @objc public init(vitalSignsTypes: [BiosenseSignal.VitalSignType])
+  @objc public func isEnabled(vitalSignType: BiosenseSignal.VitalSignType) -> Swift.Bool
+  @objc deinit
+}
+extension BiosenseSignal.EnabledVitalSigns : BiosenseSignal.BIOCustomStringConvertible {
+  @objc dynamic public var bioDescription: Swift.String {
+    @objc get
+  }
+}
+@objc(BIOLicenseDetails) @objcMembers public class LicenseDetails : ObjectiveC.NSObject {
+  @objc final public let licenseKey: Swift.String
+  @objc final public let productId: Swift.String?
+  @objc public init(licenseKey: Swift.String, productId: Swift.String?)
+  @objc public init(licenseKey: Swift.String)
+  @objc deinit
+}
+@objc(BIORRI) @objcMembers public class RRI : ObjectiveC.NSObject {
+  @objc final public let timestamp: Swift.Double
+  @objc final public let interval: Swift.Int
+  @objc public init(timestamp: Swift.Double, interval: Swift.Int)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOFallDetectionData) @objcMembers public class FallDetectionData : ObjectiveC.NSObject {
+  @objc final public let time: Foundation.Date
+  @objc deinit
+}
+@objc(BIOHighTotalCholesterolRisk) public enum HighTotalCholesterolRisk : Swift.Int {
+  case unknown
+  case low
+  case medium
+  case high
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension BiosenseSignal.HighTotalCholesterolRisk : BiosenseSignal.BIOCustomStringConvertible {
+  public var bioDescription: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignStressIndex) @objcMembers public class VitalSignStressIndex : BiosenseSignal.VitalSignInt {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignSD2) @objcMembers public class VitalSignSD2 : BiosenseSignal.VitalSignInt {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOPolarSessionBuilder) @objcMembers public class PolarSessionBuilder : BiosenseSignal.PPGDeviceSessionBuilder {
+  @objc public static let polarMinVersion: Swift.String
+  @objc final public let polarDeviceID: Swift.String
+  @objc public var userInformation: BiosenseSignal.UserInformation? {
+    get
+  }
+  @objc public init(polarDeviceID: Swift.String)
+  @objc @available(*, deprecated, message: "Use `withUserInformation()` instead.")
+  public func withSubjectDemographic(_ demographic: BiosenseSignal.SubjectDemographic) -> BiosenseSignal.PolarSessionBuilder
+  @objc public func withUserInformation(_ userInformation: BiosenseSignal.UserInformation) -> BiosenseSignal.PolarSessionBuilder
+  @objc public func withFallDetectionListener(_ listener: (any BiosenseSignal.FallDetectionListener)?) -> BiosenseSignal.PolarSessionBuilder
+  @objc override public func build(licenseDetails: BiosenseSignal.LicenseDetails) throws -> any BiosenseSignal.Session
+  @objc deinit
+}
+@objc(BIOVitalSignConfidence) @objcMembers public class VitalSignConfidence : ObjectiveC.NSObject {
+  @objc final public let level: BiosenseSignal.ConfidenceLevel
+  @objc public init(level: BiosenseSignal.ConfidenceLevel)
+  @objc deinit
+}
+@objc(BIOLogsConfiguration) @objcMembers public class LogsConfiguration : ObjectiveC.NSObject {
+  @objc final public let level: BiosenseSignal.LogsLevel
+  @objc final public let saveToPublicFolder: Swift.Bool
+  @objc public init(level: BiosenseSignal.LogsLevel, saveToPublicFolder: Swift.Bool)
+  @objc deinit
+}
+@objc(BIOSessionInfoListener) public protocol SessionInfoListener {
+  @objc func onSessionStateChange(sessionState: BiosenseSignal.SessionState)
+  @objc func onWarning(warningData: BiosenseSignal.WarningData)
+  @objc func onError(errorData: BiosenseSignal.ErrorData)
+  @objc func onLicenseInfo(licenseInfo: BiosenseSignal.LicenseInfo)
+  @objc func onEnabledVitalSigns(enabledVitalSigns: BiosenseSignal.SessionEnabledVitalSigns)
+}
+public enum Device {
+  case iPodTouch5
+  case iPodTouch6
+  case iPodTouch7
+  case iPhone4
+  case iPhone4s
+  case iPhone5
+  case iPhone5c
+  case iPhone5s
+  case iPhone6
+  case iPhone6Plus
+  case iPhone6s
+  case iPhone6sPlus
+  case iPhone7
+  case iPhone7Plus
+  case iPhoneSE
+  case iPhone8
+  case iPhone8Plus
+  case iPhoneX
+  case iPhoneXS
+  case iPhoneXSMax
+  case iPhoneXR
+  case iPhone11
+  case iPhone11Pro
+  case iPhone11ProMax
+  case iPhoneSE2
+  case iPhone12
+  case iPhone12Mini
+  case iPhone12Pro
+  case iPhone12ProMax
+  case iPhone13
+  case iPhone13Mini
+  case iPhone13Pro
+  case iPhone13ProMax
+  case iPhoneSE3
+  case iPhone14
+  case iPhone14Plus
+  case iPhone14Pro
+  case iPhone14ProMax
+  case iPhone15
+  case iPhone15Plus
+  case iPhone15Pro
+  case iPhone15ProMax
+  case iPhone16
+  case iPhone16Plus
+  case iPhone16Pro
+  case iPhone16ProMax
+  case iPad2
+  case iPad3
+  case iPad4
+  case iPadAir
+  case iPadAir2
+  case iPad5
+  case iPad6
+  case iPadAir3
+  case iPad7
+  case iPad8
+  case iPad9
+  case iPad10
+  case iPadAir4
+  case iPadAir5
+  case iPadAir11M2
+  case iPadAir13M2
+  case iPadMini
+  case iPadMini2
+  case iPadMini3
+  case iPadMini4
+  case iPadMini5
+  case iPadMini6
+  case iPadPro9Inch
+  case iPadPro12Inch
+  case iPadPro12Inch2
+  case iPadPro10Inch
+  case iPadPro11Inch
+  case iPadPro12Inch3
+  case iPadPro11Inch2
+  case iPadPro12Inch4
+  case iPadPro11Inch3
+  case iPadPro12Inch5
+  case iPadPro11Inch4
+  case iPadPro12Inch6
+  case iPadPro11M4
+  case iPadPro13M4
+  case homePod
+  indirect case simulator(BiosenseSignal.Device)
+  case unknown(Swift.String)
+  public static var current: BiosenseSignal.Device {
+    get
+  }
+  public static var identifier: Swift.String
+  public static func mapToDevice(identifier: Swift.String) -> BiosenseSignal.Device
+  public static func realDevice(from device: BiosenseSignal.Device) -> BiosenseSignal.Device
+  public var diagonal: Swift.Double {
+    get
+  }
+  public var screenRatio: (width: Swift.Double, height: Swift.Double) {
+    get
+  }
+  public static var allPods: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allPhones: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allPads: [BiosenseSignal.Device] {
+    get
+  }
+  @available(*, deprecated, renamed: "allDevicesWithSensorHousing")
+  public static var allXSeriesDevices: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allPlusSizedDevices: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allProDevices: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allMiniDevices: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allSimulatorPods: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allSimulatorPhones: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allSimulatorPads: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allSimulatorMiniDevices: [BiosenseSignal.Device] {
+    get
+  }
+  @available(*, deprecated, renamed: "allSimulatorDevicesWithSensorHousing")
+  public static var allSimulatorXSeriesDevices: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allSimulatorPlusSizedDevices: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allSimulatorProDevices: [BiosenseSignal.Device] {
+    get
+  }
+  public var isPod: Swift.Bool {
+    get
+  }
+  public var isPhone: Swift.Bool {
+    get
+  }
+  public var isPad: Swift.Bool {
+    get
+  }
+  public var realDevice: BiosenseSignal.Device {
+    get
+  }
+  public var isZoomed: Swift.Bool? {
+    get
+  }
+  public static var allTouchIDCapableDevices: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allFaceIDCapableDevices: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allBiometricAuthenticationCapableDevices: [BiosenseSignal.Device] {
+    get
+  }
+  public var isTouchIDCapable: Swift.Bool {
+    get
+  }
+  public var isFaceIDCapable: Swift.Bool {
+    get
+  }
+  public var hasBiometricSensor: Swift.Bool {
+    get
+  }
+  public static var allDevicesWithSensorHousing: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allSimulatorDevicesWithSensorHousing: [BiosenseSignal.Device] {
+    get
+  }
+  public var hasSensorHousing: Swift.Bool {
+    get
+  }
+  public static var allDevicesWithRoundedDisplayCorners: [BiosenseSignal.Device] {
+    get
+  }
+  public var hasRoundedDisplayCorners: Swift.Bool {
+    get
+  }
+  public static var allDevicesWithDynamicIsland: [BiosenseSignal.Device] {
+    get
+  }
+  public var hasDynamicIsland: Swift.Bool {
+    get
+  }
+  public static var allDevicesWith3dTouchSupport: [BiosenseSignal.Device] {
+    get
+  }
+  public var has3dTouchSupport: Swift.Bool {
+    get
+  }
+  public static var allDevicesWithWirelessChargingSupport: [BiosenseSignal.Device] {
+    get
+  }
+  public var supportsWirelessCharging: Swift.Bool {
+    get
+  }
+  public static var allDevicesWith5gSupport: [BiosenseSignal.Device] {
+    get
+  }
+  public var has5gSupport: Swift.Bool {
+    get
+  }
+  public static var allDevicesWithALidarSensor: [BiosenseSignal.Device] {
+    get
+  }
+  public var hasLidarSensor: Swift.Bool {
+    get
+  }
+  public static var allDevicesWithUSBCConnectivity: [BiosenseSignal.Device] {
+    get
+  }
+  public var hasUSBCConnectivity: Swift.Bool {
+    get
+  }
+  public var isCanvas: Swift.Bool? {
+    get
+  }
+  public static var allRealDevices: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allSimulators: [BiosenseSignal.Device] {
+    get
+  }
+  public var isSimulator: Swift.Bool {
+    get
+  }
+  public func isOneOf(_ devices: [BiosenseSignal.Device]) -> Swift.Bool
+  public var name: Swift.String? {
+    get
+  }
+  public var systemName: Swift.String? {
+    get
+  }
+  public var systemVersion: Swift.String? {
+    get
+  }
+  public var model: Swift.String? {
+    get
+  }
+  public var localizedModel: Swift.String? {
+    get
+  }
+  public var ppi: Swift.Int? {
+    get
+  }
+  public var isGuidedAccessSessionActive: Swift.Bool {
+    get
+  }
+  public var screenBrightness: Swift.Int {
+    get
+  }
+}
+extension BiosenseSignal.Device : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  public var safeDescription: Swift.String {
+    get
+  }
+}
+extension BiosenseSignal.Device : Swift.Equatable {
+  public static func == (lhs: BiosenseSignal.Device, rhs: BiosenseSignal.Device) -> Swift.Bool
+}
+@available(iOS 8.0, watchOS 4.0, *)
+extension BiosenseSignal.Device {
+  public enum BatteryState : Swift.CustomStringConvertible, Swift.Equatable {
+    case full
+    case charging(Swift.Int)
+    case unplugged(Swift.Int)
+    public var lowPowerMode: Swift.Bool {
+      get
+    }
+    public var description: Swift.String {
+      get
+    }
+  }
+  public var batteryState: BiosenseSignal.Device.BatteryState? {
+    get
+  }
+  public var batteryLevel: Swift.Int? {
+    get
+  }
+}
+@available(iOS 8.0, watchOS 4.0, *)
+extension BiosenseSignal.Device.BatteryState : Swift.Comparable {
+  public static func == (lhs: BiosenseSignal.Device.BatteryState, rhs: BiosenseSignal.Device.BatteryState) -> Swift.Bool
+  public static func < (lhs: BiosenseSignal.Device.BatteryState, rhs: BiosenseSignal.Device.BatteryState) -> Swift.Bool
+}
+extension BiosenseSignal.Device {
+  public enum Orientation {
+    case landscape
+    case portrait
+    case unknown
+    public static func == (a: BiosenseSignal.Device.Orientation, b: BiosenseSignal.Device.Orientation) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public var orientation: BiosenseSignal.Device.Orientation {
+    get
+  }
+}
+extension BiosenseSignal.Device {
+  public static var volumeTotalCapacity: Swift.Int? {
+    get
+  }
+  public static var volumeAvailableCapacity: Swift.Int? {
+    get
+  }
+  @available(iOS 11.0, *)
+  public static var volumeAvailableCapacityForImportantUsage: Swift.Int64? {
+    get
+  }
+  @available(iOS 11.0, *)
+  public static var volumeAvailableCapacityForOpportunisticUsage: Swift.Int64? {
+    get
+  }
+  @available(iOS 11.0, *)
+  public static var volumes: [Foundation.URLResourceKey : Swift.Int64]? {
+    get
+  }
+}
+extension BiosenseSignal.Device {
+  public struct ApplePencilSupport : Swift.OptionSet {
+    public var rawValue: Swift.UInt
+    public init(rawValue: Swift.UInt)
+    public static let firstGeneration: BiosenseSignal.Device.ApplePencilSupport
+    public static let secondGeneration: BiosenseSignal.Device.ApplePencilSupport
+    public static let firstGenerationUsbC: BiosenseSignal.Device.ApplePencilSupport
+    public static let pro: BiosenseSignal.Device.ApplePencilSupport
+    public typealias ArrayLiteralElement = BiosenseSignal.Device.ApplePencilSupport
+    public typealias Element = BiosenseSignal.Device.ApplePencilSupport
+    public typealias RawValue = Swift.UInt
+  }
+  public static var allApplePencilCapableDevices: [BiosenseSignal.Device] {
+    get
+  }
+  public var applePencilSupport: BiosenseSignal.Device.ApplePencilSupport {
+    get
+  }
+}
+extension BiosenseSignal.Device {
+  public enum CameraType {
+    @available(*, deprecated, renamed: "wide")
+    case normal
+    case wide
+    case telephoto
+    case ultraWide
+    public static func == (a: BiosenseSignal.Device.CameraType, b: BiosenseSignal.Device.CameraType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public var cameras: [BiosenseSignal.Device.CameraType] {
+    get
+  }
+  public static var allDevicesWithCamera: [BiosenseSignal.Device] {
+    get
+  }
+  @available(*, deprecated, renamed: "allDevicesWithWideCamera")
+  public static var allDevicesWithNormalCamera: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allDevicesWithWideCamera: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allDevicesWithTelephotoCamera: [BiosenseSignal.Device] {
+    get
+  }
+  public static var allDevicesWithUltraWideCamera: [BiosenseSignal.Device] {
+    get
+  }
+  public var hasCamera: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, renamed: "hasWideCamera")
+  public var hasNormalCamera: Swift.Bool {
+    get
+  }
+  public var hasWideCamera: Swift.Bool {
+    get
+  }
+  public var hasTelephotoCamera: Swift.Bool {
+    get
+  }
+  public var hasUltraWideCamera: Swift.Bool {
+    get
+  }
+}
+@available(iOS 11.0, watchOS 4.0, macOS 10.10.3, tvOS 11.0, *)
+extension BiosenseSignal.Device {
+  public enum ThermalState {
+    case nominal
+    case fair
+    case serious
+    case critical
+    public static func == (a: BiosenseSignal.Device.ThermalState, b: BiosenseSignal.Device.ThermalState) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public var thermalState: BiosenseSignal.Device.ThermalState? {
+    get
+  }
+}
+extension BiosenseSignal.Device {
+  public enum CPU : Swift.Comparable {
+    case a4
+    case a5
+    case a5X
+    case a6
+    case a6X
+    case a7
+    case a8
+    case a8X
+    case a9
+    case a9X
+    case a10Fusion
+    case a10XFusion
+    case a11Bionic
+    case a12Bionic
+    case a12XBionic
+    case a12ZBionic
+    case a13Bionic
+    case a14Bionic
+    case a15Bionic
+    case a16Bionic
+    case a17Pro
+    case a18
+    case a18Pro
+    case m1
+    case m2
+    case m3
+    case m4
+    case unknown
+    public static func == (a: BiosenseSignal.Device.CPU, b: BiosenseSignal.Device.CPU) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func < (a: BiosenseSignal.Device.CPU, b: BiosenseSignal.Device.CPU) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public var cpu: BiosenseSignal.Device.CPU {
+    get
+  }
+}
+extension BiosenseSignal.Device.CPU : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignLowHemoglobinRisk) @objcMembers public class VitalSignLowHemoglobinRisk : ObjectiveC.NSObject, BiosenseSignal.VitalSign {
+  @objc public var type: BiosenseSignal.VitalSignType {
+    get
+  }
+  @objc final public let value: BiosenseSignal.LowHemoglobinRisk
+  @objc deinit
+}
+extension UIKit.UIDeviceOrientation : BiosenseSignal.BIOCustomStringConvertible {
+  public var bioDescription: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignCardiacWorkload) @objcMembers public class VitalSignCardiacWorkload : BiosenseSignal.VitalSignDouble {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignRMSSD) @objcMembers public class VitalSignRMSSD : BiosenseSignal.VitalSignInt {
+  @objc deinit
+}
+@objc(BIOPpgDeviceType) public enum PPGDeviceType : Swift.Int {
+  case polar
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOImageData) @objcMembers public class ImageData : ObjectiveC.NSObject {
+  @objc final public let image: UIKit.UIImage
+  @objc final public let roi: CoreFoundation.CGRect
+  @objc final public let imageValidity: Swift.Int
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignRespirationRate) @objcMembers public class VitalSignRespirationRate : BiosenseSignal.VitalSignInt {
+  @objc final public let confidence: BiosenseSignal.VitalSignConfidence?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOSessionBuilder) @objcMembers public class SessionBuilder : ObjectiveC.NSObject {
+  @objc public var cameraLocation: BiosenseSignal.CameraLocation {
+    get
+  }
+  @objc weak public var sessionInfoListener: (any BiosenseSignal.SessionInfoListener)? {
+    get
+  }
+  @objc weak public var vitalSignsListener: (any BiosenseSignal.VitalSignsListener)? {
+    get
+  }
+  @objc weak public var imageListener: (any BiosenseSignal.ImageListener)? {
+    get
+  }
+  @objc weak public var logsListener: (any BiosenseSignal.LogsListener)? {
+    get
+  }
+  @objc public var detectionAlwaysOn: Swift.Bool {
+    get
+  }
+  @objc public var options: [Swift.String : Any]? {
+    get
+  }
+  @objc public var licenseDetails: BiosenseSignal.LicenseDetails {
+    get
+  }
+  @objc public var imageFormatMode: BiosenseSignal.ImageFormatMode {
+    get
+  }
+  @objc public var strictMeasurementGuidance: Swift.Bool {
+    get
+  }
+  @objc public var analyticsEnabled: Swift.Bool {
+    get
+  }
+  @objc public var logsConfiguration: BiosenseSignal.LogsConfiguration? {
+    get
+  }
+  @objc public func build(licenseDetails: BiosenseSignal.LicenseDetails) throws -> any BiosenseSignal.Session
+  @objc public func withSessionInfoListener(_ listener: (any BiosenseSignal.SessionInfoListener)?) -> BiosenseSignal.SessionBuilder
+  @objc public func withVitalSignsListener(_ listener: (any BiosenseSignal.VitalSignsListener)?) -> BiosenseSignal.SessionBuilder
+  @objc public func withImageListener(_ listener: (any BiosenseSignal.ImageListener)?) -> BiosenseSignal.SessionBuilder
+  @objc public func withOptions(options: [Swift.String : Any]) -> BiosenseSignal.SessionBuilder
+  @objc public func withAnalytics() -> BiosenseSignal.SessionBuilder
+  @objc(withLogsConfiguration:listener:) public func withLogs(configuration: BiosenseSignal.LogsConfiguration, listener: (any BiosenseSignal.LogsListener)? = nil) -> BiosenseSignal.SessionBuilder
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignHemoglobinA1C) @objcMembers public class VitalSignHemoglobinA1C : BiosenseSignal.VitalSignDouble {
+  @objc deinit
+}
+@objc(BIOSensorSourceType) public enum SensorSourceType : Swift.Int {
+  case `internal`
+  case polar
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOLicenseAuthenticationData) @objcMembers public class LicenseAuthenticationData : ObjectiveC.NSObject {
+  @objc final public let licenseKey: Swift.String
+  @objc final public let productID: Swift.String?
+  @objc final public let fingerprint: Swift.String
+  @objc final public let userHash: Swift.String
+  @objc final public let hostname: Swift.String
+  @objc final public let appID: Swift.String
+  @objc deinit
+}
+extension BiosenseSignal.LicenseAuthenticationData : BiosenseSignal.BIOCustomStringConvertible {
+  @objc dynamic public var bioDescription: Swift.String {
+    @objc get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignRRI) @objcMembers public class VitalSignRRI : ObjectiveC.NSObject, BiosenseSignal.VitalSign {
+  @objc public var type: BiosenseSignal.VitalSignType {
+    get
+  }
+  @objc final public let value: [BiosenseSignal.RRI]
+  @objc final public let confidence: BiosenseSignal.VitalSignConfidence?
+  @objc deinit
+}
+extension BiosenseSignal.VitalSignRRI : BiosenseSignal.BIOCustomStringConvertible {
+  @objc dynamic public var bioDescription: Swift.String {
+    @objc get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(BIOVitalSignsResults) @objcMembers public class VitalSignsResults : ObjectiveC.NSObject {
+  @objc public func getResults() -> [any BiosenseSignal.VitalSign]
+  @objc public func getResult(of vitalSignType: BiosenseSignal.VitalSignType) -> (any BiosenseSignal.VitalSign)?
+  @objc public func getVitalSignTypes() -> [BiosenseSignal.VitalSignType]
+  @objc deinit
+}
+extension BiosenseSignal.VitalSignsResults {
+  @objc override dynamic public var debugDescription: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+}
+@objc(BIOLicenseActivationInfo) @objcMembers public class LicenseActivationInfo : ObjectiveC.NSObject {
+  @objc final public let activationID: Swift.String
+  @objc public init(activationID: Swift.String)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOUserInformation) @objcMembers public class UserInformation : ObjectiveC.NSObject {
+  @objc final public let sex: BiosenseSignal.Sex
+  @objc final public let age: Foundation.NSNumber?
+  @objc final public let weight: Foundation.NSNumber?
+  @objc final public let height: Foundation.NSNumber?
+  @objc final public let smokingStatus: BiosenseSignal.SmokingStatus
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOLogsInfo) @objcMembers public class LogsInfo : ObjectiveC.NSObject {
+  @objc final public let logsPath: Swift.String
+  @objc final public let measurementDuration: Swift.Int
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignDouble) @objcMembers public class VitalSignDouble : ObjectiveC.NSObject, BiosenseSignal.VitalSign {
+  @objc public var type: BiosenseSignal.VitalSignType {
+    get
+  }
+  @objc final public let value: Swift.Double
+  @objc deinit
+}
+extension BiosenseSignal.VitalSignDouble : BiosenseSignal.BIOCustomStringConvertible {
+  @objc dynamic public var bioDescription: Swift.String {
+    @objc get
+  }
+}
+@objc(BIOImageListener) public protocol ImageListener {
+  @objc func onImage(imageData: BiosenseSignal.ImageData)
+}
+@objc(BIOPpgDeviceScanner) public protocol PPGDeviceScanner {
+  @objc func start() throws
+  @objc func start(timeout: Swift.UInt) throws
+  @objc func stop()
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignHighBloodPressureRisk) @objcMembers public class VitalSignHighBloodPressureRisk : ObjectiveC.NSObject, BiosenseSignal.VitalSign {
+  @objc public var type: BiosenseSignal.VitalSignType {
+    get
+  }
+  @objc final public let value: BiosenseSignal.HighBloodPressureRisk
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignHighFastingGlucoseRisk) @objcMembers public class VitalSignHighFastingGlucoseRisk : ObjectiveC.NSObject, BiosenseSignal.VitalSign {
+  @objc public var type: BiosenseSignal.VitalSignType {
+    get
+  }
+  @objc final public let value: BiosenseSignal.HighFastingGlucoseRisk
+  @objc deinit
+}
+@objc(BIOBloodPressure) @objcMembers public class BloodPressure : ObjectiveC.NSObject {
+  @objc final public let systolic: Swift.Int
+  @objc final public let diastolic: Swift.Int
+  @objc public init(systolic: Swift.Int, diastolic: Swift.Int)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignASCVDRiskLevel) @objcMembers public class VitalSignASCVDRiskLevel : ObjectiveC.NSObject, BiosenseSignal.VitalSign {
+  @objc public var type: BiosenseSignal.VitalSignType {
+    get
+  }
+  @objc final public let value: BiosenseSignal.ASCVDRiskLevel
+  @objc deinit
+}
+@objc(BIOCameraLocation) public enum CameraLocation : Swift.Int {
+  case front
+  case back
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(BIOImageValidity) @objcMembers public class ImageValidity : ObjectiveC.NSObject {
+  @objc public static let valid: Swift.Int
+  @objc public static let invalidDeviceOrientation: Swift.Int
+  @objc public static let invalidRoi: Swift.Int
+  @objc public static let tiltedHead: Swift.Int
+  @objc public static let faceTooFar: Swift.Int
+  @objc public static let unevenLight: Swift.Int
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignMeanArterialPressure) @objcMembers public class VitalSignMeanArterialPressure : BiosenseSignal.VitalSignInt {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignHighTotalCholesterolRisk) @objcMembers public class VitalSignHighTotalCholesterolRisk : ObjectiveC.NSObject, BiosenseSignal.VitalSign {
+  @objc public var type: BiosenseSignal.VitalSignType {
+    get
+  }
+  @objc final public let value: BiosenseSignal.HighTotalCholesterolRisk
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignOxygenSaturation) @objcMembers public class VitalSignOxygenSaturation : BiosenseSignal.VitalSignInt {
+  @objc deinit
+}
+@objc(BIOASCVDRiskLevel) public enum ASCVDRiskLevel : Swift.Int {
+  case unknown
+  case low
+  case medium
+  case high
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension BiosenseSignal.ASCVDRiskLevel : BiosenseSignal.BIOCustomStringConvertible {
+  public var bioDescription: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(BIOVitalSignTypes) @objcMembers public class VitalSignTypes : ObjectiveC.NSObject {
+  @objc public static let none: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let pulseRate: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let respirationRate: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let oxygenSaturation: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let stressLevel: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let stressIndex: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let sdnn: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let bloodPressure: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let rri: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let meanRri: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let rmssd: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let sd1: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let sd2: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let prq: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let pnsIndex: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let pnsZone: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let snsIndex: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let snsZone: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let wellnessIndex: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let wellnessLevel: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let lfhf: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let hemoglobin: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let hemoglobinA1C: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let highHemoglobinA1CRisk: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let highBloodPressureRisk: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let ascvdRisk: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let normalizedStressIndex: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let heartAge: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let lowHemoglobinRisk: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let highTotalCholesterolRisk: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let highFastingGlucoseRisk: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let cardiacWorkload: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let ascvdRiskLevel: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let meanArterialPressure: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let pulsePressure: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public static let bodyTensionScore: BiosenseSignal.VitalSignTypeBitmaskCode
+  @objc public var all: [BiosenseSignal.VitalSignType] {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignHeartAge) @objcMembers public class VitalSignHeartAge : BiosenseSignal.VitalSignInt {
+  @objc deinit
+}
+@objc(BIOHighFastingGlucoseRisk) public enum HighFastingGlucoseRisk : Swift.Int {
+  case unknown
+  case low
+  case medium
+  case high
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension BiosenseSignal.HighFastingGlucoseRisk : BiosenseSignal.BIOCustomStringConvertible {
+  public var bioDescription: Swift.String {
+    get
+  }
+}
+@objc(BIOHighHemoglobinA1CRisk) public enum HighHemoglobinA1CRisk : Swift.Int {
+  case unknown
+  case low
+  case medium
+  case high
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension BiosenseSignal.HighHemoglobinA1CRisk : BiosenseSignal.BIOCustomStringConvertible {
+  public var bioDescription: Swift.String {
+    get
+  }
+}
+@objc(BIOFaceAngles) @objcMembers public class FaceAngles : ObjectiveC.NSObject {
+  @objc final public let yaw: Swift.Float
+  @objc final public let roll: Swift.Float
+  @objc final public let pitch: Swift.Float
+  @objc public init(yaw: Swift.Float, roll: Swift.Float, pitch: Swift.Float)
+  @objc deinit
+}
+extension BiosenseSignal.FaceAngles {
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public var debugDescription: Swift.String {
+    @objc get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignPulsePressure) @objcMembers public class VitalSignPulsePressure : BiosenseSignal.VitalSignInt {
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(BIOSessionEnabledVitalSigns) @objcMembers public class SessionEnabledVitalSigns : ObjectiveC.NSObject {
+  @objc final public let deviceEnabled: BiosenseSignal.EnabledVitalSigns
+  @objc final public let measurementModeEnabled: BiosenseSignal.EnabledVitalSigns
+  @objc final public let licenseEnabled: BiosenseSignal.EnabledVitalSigns
+  @objc override dynamic public init()
+  @objc public init(deviceEnabled: BiosenseSignal.EnabledVitalSigns, measurementModeEnabled: BiosenseSignal.EnabledVitalSigns, licenseEnabled: BiosenseSignal.EnabledVitalSigns)
+  @objc public func isEnabled(vitalSignType: BiosenseSignal.VitalSignType) -> Swift.Bool
+  @objc public func isDeviceEnabled(vitalSignType: BiosenseSignal.VitalSignType) -> Swift.Bool
+  @objc public func isMeasurementModeEnabled(vitalSignType: BiosenseSignal.VitalSignType) -> Swift.Bool
+  @objc public func isLicenseEnabled(vitalSignType: BiosenseSignal.VitalSignType) -> Swift.Bool
+  @objc deinit
+}
+@objc(BIOPpgDeviceInfo) @objcMembers public class PPGDeviceInfo : ObjectiveC.NSObject {
+  @objc final public let type: BiosenseSignal.PPGDeviceType
+  @objc final public let deviceID: Swift.String
+  @objc final public let version: Swift.String
+  @objc public init(type: BiosenseSignal.PPGDeviceType, deviceID: Swift.String, version: Swift.String)
+  @objc deinit
+}
+public struct ImageRGB {
+  public let red: Swift.Int
+  public let green: Swift.Int
+  public let blue: Swift.Int
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignBodyTensionScore) @objcMembers public class VitalSignBodyTensionScore : BiosenseSignal.VitalSignInt {
+  @objc deinit
+}
+public struct SessionFolder {
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignPulseRate) @objcMembers public class VitalSignPulseRate : BiosenseSignal.VitalSignInt {
+  @objc final public let confidence: BiosenseSignal.VitalSignConfidence?
+  @objc deinit
+}
+public struct MeasurementFolder {
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignStressLevel) @objcMembers public class VitalSignStressLevel : ObjectiveC.NSObject, BiosenseSignal.VitalSign {
+  @objc public var type: BiosenseSignal.VitalSignType {
+    get
+  }
+  @objc final public let value: BiosenseSignal.StressLevel
+  @objc deinit
+}
+extension BiosenseSignal.VitalSignStressLevel : BiosenseSignal.BIOCustomStringConvertible {
+  @objc dynamic public var bioDescription: Swift.String {
+    @objc get
+  }
+}
+@objc(BIOPpgDeviceInfoListener) public protocol PPGDeviceInfoListener {
+  @objc func onPPGDeviceBatteryLevel(_ batteryLevel: Swift.UInt)
+  @objc func onPPGDeviceInfo(_ info: BiosenseSignal.PPGDeviceInfo)
+}
+@_hasMissingDesignatedInitializers @objc(BIOAccelerometerData) @objcMembers public class AccelerometerData : ObjectiveC.NSObject {
+  @objc final public let timestamp: Swift.Double
+  @objc final public let x: Swift.Int32
+  @objc final public let y: Swift.Int32
+  @objc final public let z: Swift.Int32
+  @objc deinit
+}
+@objc(BIOVitalSignsListener) public protocol VitalSignsListener {
+  @objc func onVitalSign(vitalSign: any BiosenseSignal.VitalSign)
+  @objc func onFinalResults(results: BiosenseSignal.VitalSignsResults)
+}
+@objc(BIOLicenseOfflineMeasurements) @objcMembers public class LicenseOfflineMeasurements : ObjectiveC.NSObject {
+  @objc final public let totalMeasurements: Swift.Int64
+  @objc final public let remainingMeasurements: Swift.Int64
+  @objc final public let measurementEndTimestamp: Swift.Int64
+  @objc public init(totalMeasurements: Swift.Int64, remainingMeasurements: Swift.Int64, measurementEndTimestamp: Swift.Int64)
+  @objc deinit
+}
+public typealias AlertDomain = Swift.String
+@objc @_inheritsConvenienceInitializers @objcMembers public class AlertDomains : ObjectiveC.NSObject {
+  @objc public static let device: Swift.String
+  @objc public static let camera: Swift.String
+  @objc public static let license: Swift.String
+  @objc public static let measurement: Swift.String
+  @objc public static let vitalSigns: Swift.String
+  @objc public static let recorder: Swift.String
+  @objc public static let session: Swift.String
+  @objc public static let initialization: Swift.String
+  @objc public static let ppgDevice: Swift.String
+  @objc public static let monitoring: Swift.String
+  @objc public var all: [BiosenseSignal.AlertDomain] {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(BIOSession) public protocol Session {
+  @objc func start(measurementDuration: Swift.UInt64) throws
+  @objc func stop() throws
+  @objc func terminate()
+  @objc var state: BiosenseSignal.SessionState { get }
+}
+@objc(BIOImageFormatMode) public enum ImageFormatMode : Swift.Int {
+  case standardQuality
+  case highQuality
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOPpgDeviceSessionBuilder) @objcMembers public class PPGDeviceSessionBuilder : ObjectiveC.NSObject {
+  @objc weak public var sessionInfoListener: (any BiosenseSignal.SessionInfoListener)? {
+    get
+  }
+  @objc weak public var vitalSignsListener: (any BiosenseSignal.VitalSignsListener)? {
+    get
+  }
+  @objc weak public var ppgDeviceInfoListener: (any BiosenseSignal.PPGDeviceInfoListener)? {
+    get
+  }
+  @objc weak public var fallDetectionListener: (any BiosenseSignal.FallDetectionListener)? {
+    get
+  }
+  @objc weak public var logsListener: (any BiosenseSignal.LogsListener)? {
+    get
+  }
+  @objc public var options: [Swift.String : Any]? {
+    get
+  }
+  @objc public var licenseDetails: BiosenseSignal.LicenseDetails {
+    get
+  }
+  @objc public var analyticsEnabled: Swift.Bool {
+    get
+  }
+  @objc public var logsConfiguration: BiosenseSignal.LogsConfiguration? {
+    get
+  }
+  @objc public func build(licenseDetails: BiosenseSignal.LicenseDetails) throws -> any BiosenseSignal.Session
+  @objc public func withSessionInfoListener(_ listener: (any BiosenseSignal.SessionInfoListener)?) -> BiosenseSignal.PPGDeviceSessionBuilder
+  @objc public func withVitalSignsListener(_ listener: (any BiosenseSignal.VitalSignsListener)?) -> BiosenseSignal.PPGDeviceSessionBuilder
+  @objc public func withPPGDeviceInfoListener(_ listener: (any BiosenseSignal.PPGDeviceInfoListener)?) -> BiosenseSignal.PPGDeviceSessionBuilder
+  @objc public func withOptions(options: [Swift.String : Any]) -> BiosenseSignal.PPGDeviceSessionBuilder
+  @objc public func withAnalytics() -> BiosenseSignal.PPGDeviceSessionBuilder
+  @objc(withLogsConfiguration:listener:) public func withLogs(configuration: BiosenseSignal.LogsConfiguration, listener: (any BiosenseSignal.LogsListener)? = nil) -> BiosenseSignal.PPGDeviceSessionBuilder
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignBloodPressure) @objcMembers public class VitalSignBloodPressure : ObjectiveC.NSObject, BiosenseSignal.VitalSign {
+  @objc public var type: BiosenseSignal.VitalSignType {
+    get
+  }
+  @objc final public let value: BiosenseSignal.BloodPressure
+  @objc deinit
+}
+extension BiosenseSignal.VitalSignBloodPressure : BiosenseSignal.BIOCustomStringConvertible {
+  @objc dynamic public var bioDescription: Swift.String {
+    @objc get
+  }
+}
+@objc(BIOStressLevel) public enum StressLevel : Swift.Int {
+  case unknown
+  case low
+  case normal
+  case mild
+  case high
+  case extreme
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension BiosenseSignal.StressLevel : BiosenseSignal.BIOCustomStringConvertible {
+  public var bioDescription: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignInt) @objcMembers public class VitalSignInt : ObjectiveC.NSObject, BiosenseSignal.VitalSign {
+  @objc public var type: BiosenseSignal.VitalSignType {
+    get
+  }
+  @objc final public let value: Swift.Int
+  @objc deinit
+}
+extension BiosenseSignal.VitalSignInt : BiosenseSignal.BIOCustomStringConvertible {
+  @objc dynamic public var bioDescription: Swift.String {
+    @objc get
+  }
+}
+@objc(BIOLicenseMessage) @objcMembers public class LicenseMessage : ObjectiveC.NSObject {
+  @objc public static let error: Swift.Int
+  @objc public static let warning: Swift.Int
+  @objc public static let licenseData: Swift.Int
+  @objc public static let done: Swift.Int
+  @objc public init(type: Swift.Int, value: Any?)
+  @objc deinit
+}
+extension BiosenseSignal.LicenseMessage : BiosenseSignal.BIOCustomStringConvertible {
+  @objc dynamic public var bioDescription: Swift.String {
+    @objc get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignHemoglobin) @objcMembers public class VitalSignHemoglobin : BiosenseSignal.VitalSignDouble {
+  @objc deinit
+}
+@objc(BIOCoreMessageDelegate) public protocol CoreMessageDelegate {
+  @objc func coreMessage(_ coreMessage: BiosenseSignal.CoreMessage)
+}
+@_inheritsConvenienceInitializers @objc(BIOPpgDeviceScannerFactory) @objcMembers public class PPGDeviceScannerFactory : ObjectiveC.NSObject {
+  @objc public class func create(ppgDeviceType: BiosenseSignal.PPGDeviceType, listener: any BiosenseSignal.PPGDeviceScannerListener) throws -> any BiosenseSignal.PPGDeviceScanner
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(BIOSnsZone) public enum SNSZone : Swift.Int {
+  case unknown
+  case low
+  case normal
+  case high
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension BiosenseSignal.SNSZone : BiosenseSignal.BIOCustomStringConvertible {
+  public var bioDescription: Swift.String {
+    get
+  }
+}
+@objc(BIOHighBloodPressureRisk) public enum HighBloodPressureRisk : Swift.Int {
+  case unknown
+  case low
+  case medium
+  case high
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension BiosenseSignal.HighBloodPressureRisk : BiosenseSignal.BIOCustomStringConvertible {
+  public var bioDescription: Swift.String {
+    get
+  }
+}
+@objc(BIOPnsZone) public enum PNSZone : Swift.Int {
+  case unknown
+  case low
+  case normal
+  case high
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension BiosenseSignal.PNSZone : BiosenseSignal.BIOCustomStringConvertible {
+  public var bioDescription: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignPNSZone) @objcMembers public class VitalSignPNSZone : ObjectiveC.NSObject, BiosenseSignal.VitalSign {
+  @objc public var type: BiosenseSignal.VitalSignType {
+    get
+  }
+  @objc final public let value: BiosenseSignal.PNSZone
+  @objc deinit
+}
+extension BiosenseSignal.VitalSignPNSZone : BiosenseSignal.BIOCustomStringConvertible {
+  @objc dynamic public var bioDescription: Swift.String {
+    @objc get
+  }
+}
+@objc(BIOSessionState) public enum SessionState : Swift.Int {
+  case initializing
+  case ready
+  case starting
+  case processing
+  case stopping
+  case terminating
+  case terminated
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension BiosenseSignal.SessionState : BiosenseSignal.BIOCustomStringConvertible {
+  public var bioDescription: Swift.String {
+    get
+  }
+}
+public protocol BIOCustomStringConvertible {
+  var bioDescription: Swift.String { get }
+}
+@objc(BIOPpgDeviceScannerListener) public protocol PPGDeviceScannerListener {
+  @objc func onPPGDeviceDiscovered(ppgDevice: BiosenseSignal.PPGDevice)
+  @objc func onPPGDeviceScanFinished()
+}
+@objc(BIOConfidenceLevel) public enum ConfidenceLevel : Swift.Int {
+  case unknown
+  case low
+  case medium
+  case high
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension Swift.Int64 : BiosenseSignal.BIOCustomStringConvertible {
+  public var bioDescription: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignLFHF) @objcMembers public class VitalSignLFHF : BiosenseSignal.VitalSignDouble {
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(BIOUserInformationBuilder) @objcMembers public class UserInformationBuilder : ObjectiveC.NSObject {
+  @objc public var _sex: BiosenseSignal.Sex {
+    get
+  }
+  @objc public var _age: Foundation.NSNumber? {
+    get
+  }
+  @objc public var _weight: Foundation.NSNumber? {
+    get
+  }
+  @objc public var _height: Foundation.NSNumber? {
+    get
+  }
+  @objc public var _smokingStatus: BiosenseSignal.SmokingStatus {
+    get
+  }
+  @objc public func setSex(_ sex: BiosenseSignal.Sex) -> BiosenseSignal.UserInformationBuilder
+  @objc public func setAge(_ age: Foundation.NSNumber) -> BiosenseSignal.UserInformationBuilder
+  @objc public func setWeight(_ weight: Foundation.NSNumber) -> BiosenseSignal.UserInformationBuilder
+  @objc public func setHeight(_ height: Foundation.NSNumber) -> BiosenseSignal.UserInformationBuilder
+  @objc public func setSmokingStatus(_ smokingStatus: BiosenseSignal.SmokingStatus) -> BiosenseSignal.UserInformationBuilder
+  @objc public func build() -> BiosenseSignal.UserInformation
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(BIOLicenseTokenData) @objcMembers public class LicenseTokenData : ObjectiveC.NSObject {
+  @objc public init(activationID: Swift.String, enabledVitalSigns: BiosenseSignal.VitalSignType, externalSensorEnabledVitalSigns: BiosenseSignal.VitalSignType, totalOfflineMeasurements: Swift.Int64, remainingOfflineMeasurements: Swift.Int64, offlineMeasurementEndTimestamp: Swift.Int64)
+  @objc deinit
+}
+@objc(BIODeviceOrientation) public enum DeviceOrientation : Swift.Int {
+  case portrait
+  case portraitUpsideDown
+  case landscapeLeft
+  case landscapeRight
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension BiosenseSignal.DeviceOrientation : BiosenseSignal.BIOCustomStringConvertible {
+  public var bioDescription: Swift.String {
+    get
+  }
+}
+@objc(BIOVitalSign) public protocol VitalSign {
+  @objc var type: BiosenseSignal.VitalSignType { get }
+}
+@objc(BIOPpgDevice) @objcMembers public class PPGDevice : ObjectiveC.NSObject {
+  @objc final public let type: BiosenseSignal.PPGDeviceType
+  @objc final public let deviceID: Swift.String
+  @objc public init(type: BiosenseSignal.PPGDeviceType, deviceID: Swift.String)
+  @objc deinit
+}
+@objc(BIOFallDetectionListener) public protocol FallDetectionListener {
+  @objc func onFallDetectionData(_ fallDetectionData: BiosenseSignal.FallDetectionData)
+}
+@_hasMissingDesignatedInitializers @objc(BIOWarningData) @objcMembers public class WarningData : ObjectiveC.NSObject, BiosenseSignal.AlertData {
+  @objc public var domain: Swift.String
+  @objc public var code: Swift.Int
+  @objc public var additionalInfo: [Swift.String : Any]
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOGyroscopeData) @objcMembers public class GyroscopeData : ObjectiveC.NSObject {
+  @objc final public let timestamp: Swift.Double
+  @objc final public let x: Swift.Float
+  @objc final public let y: Swift.Float
+  @objc final public let z: Swift.Float
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignPRQ) @objcMembers public class VitalSignPRQ : BiosenseSignal.VitalSignDouble {
+  @objc final public let confidence: BiosenseSignal.VitalSignConfidence?
+  @objc deinit
+}
+@objc(BIOCoreMessage) @objcMembers public class CoreMessage : ObjectiveC.NSObject {
+  @objc final public let type: BiosenseSignal.CoreMessageType
+  @objc final public let value: Any
+  @objc public init(type: BiosenseSignal.CoreMessageType, value: Any)
+  @objc deinit
+}
+extension BiosenseSignal.CoreMessage : BiosenseSignal.BIOCustomStringConvertible {
+  @objc dynamic public var bioDescription: Swift.String {
+    @objc get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOErrorData) @objcMembers public class ErrorData : ObjectiveC.NSObject, BiosenseSignal.AlertData {
+  @objc public var domain: Swift.String
+  @objc public var code: Swift.Int
+  @objc public var additionalInfo: [Swift.String : Any]
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignAscvdRidk) @objcMembers public class VitalSignASCVDRisk : BiosenseSignal.VitalSignDouble {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignWellnessLevel) @objcMembers public class VitalSignWellnessLevel : ObjectiveC.NSObject, BiosenseSignal.VitalSign {
+  @objc public var type: BiosenseSignal.VitalSignType {
+    get
+  }
+  @objc final public let value: BiosenseSignal.WellnessLevel
+  @objc deinit
+}
+extension BiosenseSignal.VitalSignWellnessLevel : BiosenseSignal.BIOCustomStringConvertible {
+  @objc dynamic public var bioDescription: Swift.String {
+    @objc get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(BIOVitalSignPNSIndex) @objcMembers public class VitalSignPNSIndex : BiosenseSignal.VitalSignDouble {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(BIOLogsLevel) @objcMembers public class LogsLevel : ObjectiveC.NSObject {
+  @objc final public let rawValue: Swift.Int
+  @objc final public let name: Swift.String
+  @objc public static let `default`: BiosenseSignal.LogsLevel
+  @objc deinit
+}
+@objc(BIOSmokingStatus) public enum SmokingStatus : Swift.Int {
+  case unspecified
+  case smoker
+  case nonSmoker
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension BiosenseSignal.WellnessLevel : Swift.Equatable {}
+extension BiosenseSignal.WellnessLevel : Swift.Hashable {}
+extension BiosenseSignal.WellnessLevel : Swift.RawRepresentable {}
+extension BiosenseSignal.CoreMessageType : Swift.Equatable {}
+extension BiosenseSignal.CoreMessageType : Swift.Hashable {}
+extension BiosenseSignal.CoreMessageType : Swift.RawRepresentable {}
+extension BiosenseSignal.Sex : Swift.Equatable {}
+extension BiosenseSignal.Sex : Swift.Hashable {}
+extension BiosenseSignal.Sex : Swift.RawRepresentable {}
+extension BiosenseSignal.LowHemoglobinRisk : Swift.Equatable {}
+extension BiosenseSignal.LowHemoglobinRisk : Swift.Hashable {}
+extension BiosenseSignal.LowHemoglobinRisk : Swift.RawRepresentable {}
+extension BiosenseSignal.HighTotalCholesterolRisk : Swift.Equatable {}
+extension BiosenseSignal.HighTotalCholesterolRisk : Swift.Hashable {}
+extension BiosenseSignal.HighTotalCholesterolRisk : Swift.RawRepresentable {}
+extension BiosenseSignal.Device.Orientation : Swift.Equatable {}
+extension BiosenseSignal.Device.Orientation : Swift.Hashable {}
+extension BiosenseSignal.Device.CameraType : Swift.Equatable {}
+extension BiosenseSignal.Device.CameraType : Swift.Hashable {}
+@available(iOS 11.0, watchOS 4.0, macOS 10.10.3, tvOS 11.0, *)
+extension BiosenseSignal.Device.ThermalState : Swift.Equatable {}
+@available(iOS 11.0, watchOS 4.0, macOS 10.10.3, tvOS 11.0, *)
+extension BiosenseSignal.Device.ThermalState : Swift.Hashable {}
+extension BiosenseSignal.Device.CPU : Swift.Hashable {}
+extension BiosenseSignal.PPGDeviceType : Swift.Equatable {}
+extension BiosenseSignal.PPGDeviceType : Swift.Hashable {}
+extension BiosenseSignal.PPGDeviceType : Swift.RawRepresentable {}
+extension BiosenseSignal.SensorSourceType : Swift.Equatable {}
+extension BiosenseSignal.SensorSourceType : Swift.Hashable {}
+extension BiosenseSignal.SensorSourceType : Swift.RawRepresentable {}
+extension BiosenseSignal.CameraLocation : Swift.Equatable {}
+extension BiosenseSignal.CameraLocation : Swift.Hashable {}
+extension BiosenseSignal.CameraLocation : Swift.RawRepresentable {}
+extension BiosenseSignal.ASCVDRiskLevel : Swift.Equatable {}
+extension BiosenseSignal.ASCVDRiskLevel : Swift.Hashable {}
+extension BiosenseSignal.ASCVDRiskLevel : Swift.RawRepresentable {}
+extension BiosenseSignal.HighFastingGlucoseRisk : Swift.Equatable {}
+extension BiosenseSignal.HighFastingGlucoseRisk : Swift.Hashable {}
+extension BiosenseSignal.HighFastingGlucoseRisk : Swift.RawRepresentable {}
+extension BiosenseSignal.HighHemoglobinA1CRisk : Swift.Equatable {}
+extension BiosenseSignal.HighHemoglobinA1CRisk : Swift.Hashable {}
+extension BiosenseSignal.HighHemoglobinA1CRisk : Swift.RawRepresentable {}
+extension BiosenseSignal.ImageFormatMode : Swift.Equatable {}
+extension BiosenseSignal.ImageFormatMode : Swift.Hashable {}
+extension BiosenseSignal.ImageFormatMode : Swift.RawRepresentable {}
+extension BiosenseSignal.StressLevel : Swift.Equatable {}
+extension BiosenseSignal.StressLevel : Swift.Hashable {}
+extension BiosenseSignal.StressLevel : Swift.RawRepresentable {}
+extension BiosenseSignal.SNSZone : Swift.Equatable {}
+extension BiosenseSignal.SNSZone : Swift.Hashable {}
+extension BiosenseSignal.SNSZone : Swift.RawRepresentable {}
+extension BiosenseSignal.HighBloodPressureRisk : Swift.Equatable {}
+extension BiosenseSignal.HighBloodPressureRisk : Swift.Hashable {}
+extension BiosenseSignal.HighBloodPressureRisk : Swift.RawRepresentable {}
+extension BiosenseSignal.PNSZone : Swift.Equatable {}
+extension BiosenseSignal.PNSZone : Swift.Hashable {}
+extension BiosenseSignal.PNSZone : Swift.RawRepresentable {}
+extension BiosenseSignal.SessionState : Swift.Equatable {}
+extension BiosenseSignal.SessionState : Swift.Hashable {}
+extension BiosenseSignal.SessionState : Swift.RawRepresentable {}
+extension BiosenseSignal.ConfidenceLevel : Swift.Equatable {}
+extension BiosenseSignal.ConfidenceLevel : Swift.Hashable {}
+extension BiosenseSignal.ConfidenceLevel : Swift.RawRepresentable {}
+extension BiosenseSignal.DeviceOrientation : Swift.Equatable {}
+extension BiosenseSignal.DeviceOrientation : Swift.Hashable {}
+extension BiosenseSignal.DeviceOrientation : Swift.RawRepresentable {}
+extension BiosenseSignal.SmokingStatus : Swift.Equatable {}
+extension BiosenseSignal.SmokingStatus : Swift.Hashable {}
+extension BiosenseSignal.SmokingStatus : Swift.RawRepresentable {}

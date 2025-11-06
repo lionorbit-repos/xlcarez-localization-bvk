@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>MediflixXL-Test</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>mediflix-xl-test</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>sms</string>
+		<string>tel</string>
+		<string>Mediflix</string>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>MediflixXL uses Bluetooth to connect with supported health and wearable devices.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>MediflixXL requires access to your camera for scanning QR codes, monitoring your health vitals using remote Photoplethysmography (rPPG), and uploading health-related documents.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>MediflixXL requests access to your contacts to simplify sharing health information, invite others to join the app, and easily schedule appointments with your healthcare providers. This allows for quicker communication and collaboration within your health network.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>MediflixXL needs access to your microphone for video consultations with healthcare professionals. This ensures clear communication during your virtual appointments.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>This application tracks your steps</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>MediflixXL uses photo library</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>MediflixXL uses speech recognition features to enhance user interaction and accessibility.</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	
+</dict>
+
+
+</plist>

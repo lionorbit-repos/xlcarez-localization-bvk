@@ -1,0 +1,12 @@
+{
+   "logger_severity":0,
+   "loggers":{
+      "platform_logger":{
+         "enabled":false
+      },
+      "file_logger":{
+         "enabled":false,
+         "folder_path":""
+      }
+   }
+}

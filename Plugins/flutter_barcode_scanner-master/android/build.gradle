@@ -1,0 +1,43 @@
+group 'com.amolg.flutterbarcodescanner'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '1.9.0'
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+       classpath 'com.android.tools.build:gradle:7.4.2'
+       classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    namespace "com.amolg.flutterbarcodescanner"
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        //testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'com.google.android.gms:play-services-vision:20.1.3'
+}

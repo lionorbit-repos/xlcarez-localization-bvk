@@ -1,0 +1,24 @@
+framework module BiosenseSignal {
+    umbrella header "BiosenseSignal.h"
+
+    export *
+    module * { export * }
+    
+    
+    explicit module Private {
+        header "BIOMatWrapper.h"
+        header "BIOImageHelper.h"
+        header "BIOErrorFactory.h"
+        header "BIOInternalVitalSign.h"
+        header "BIOInternalCoreProcessResult.h"
+        header "BIOInternalCoreDriverOperationModes.h"
+        header "BIOMatHelper.h"
+        header "BIOKeychain.h"
+        header "BIOMeasurementMode.h"
+    }
+}
+
+module BiosenseSignal.Swift {
+  header "BiosenseSignal-Swift.h"
+  requires objc
+}
