@@ -654,7 +654,7 @@ Widget weightField(context,
       controller: controller,
       decoration: decoration ??
           inputDecoration(
-              //labelText: labelText,
+              // labelText: labelText,
               hintText: hintText,
               col: col,
               isbalck: isblack),

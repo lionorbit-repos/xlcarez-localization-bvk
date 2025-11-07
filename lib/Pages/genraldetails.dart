@@ -117,7 +117,9 @@ class _GenraldetailsState extends State<Genraldetails> {
                                           labelText: auth.merticweight == "kg"
                                               ? fetchlocale(context).wgtin
                                               : fetchlocale(context).wgtinlb,
-                                          hintText: fetchlocale(context).wgtin,
+                                          hintText: auth.merticweight == 'kg'
+                                              ? fetchlocale(context).wgtin
+                                              : fetchlocale(context).wgtinlb,
                                           maxLength: 3,
                                           col: transparentcol),
                                     ),
