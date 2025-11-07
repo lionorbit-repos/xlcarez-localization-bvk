@@ -182,7 +182,8 @@ class _DashboardState extends State<Dashboard> {
                                             load: false,
                                             title: fetchlocale(context).add,
                                             onTap: () {
-                                         navigationSlide(context, const Reaminders());
+                                          navigationSlide(
+                                              context, const Reaminders());
                                         }))
                                   ],
                                 ),
@@ -236,88 +237,86 @@ class _DashboardState extends State<Dashboard> {
                                           context, vital.getallvitals[0]),
                                     )),
                         ),
-                         SliverToBoxAdapter(
-                                child: Container(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 5),
-                                  height: 300,
-                                  //decoration: BoxDecoration(color: primary),
-                                  child: Row(
+                        SliverToBoxAdapter(
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            height: 300,
+                            //decoration: BoxDecoration(color: primary),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                    child: Column(
+                                  children: [
+                                    mynewdashcard(
+                                        image: "assets/foodtrack.png",
+                                        htitle: fetchlocale(context).flog,
+                                        ontap: () {
+                                          navigationSlide(
+                                              context, FoodLogList());
+                                        },
+                                        bottom: Apptextwidget(
+                                            '${fetchlocale(context).clintake} - ${foodctrl.foodcal ?? "0"} ${fetchlocale(context).kcal}',
+                                            //"Calorie ${foodctrl.foodcal} kcal",
+                                            style: TxtStls.mynewstyle)),
+                                    mynewdashcard(
+                                      image: "assets/fatigue.jpg",
+                                      htitle: fetchlocale(context).fatigescore,
+                                      ontap: () {
+                                        assment.fatiguelist.isEmpty
+                                            ? navigationSlide(context,
+                                                const Calculatordasboard())
+                                            : navigationSlide(context,
+                                                const Fatiguelonglist());
+                                      },
+                                      bottom: Apptextwidget(
+                                        assment.fatiguelist.isEmpty
+                                            ? ""
+                                            : "${fetchlocale(context).youare} ${assment.handlevalue(assment.fatiguelist[0].fatiguescore) ? fetchlocale(context).not : ""} ${fetchlocale(context).leveltext}",
+                                        // "you are ${assment.handlevalue(assment.fatiguelist[0].fatiguescore) ? "not" : ""} experiencing clinically \nsignificant fatigue level.",
+                                        style: TxtStls.stl13,
+                                      ),
+                                    ),
+                                  ],
+                                )),
+                                Expanded(
+                                  child: Column(
                                     children: [
-                                      Expanded(
-                                          child: Column(
-                                        children: [
-                                          mynewdashcard(
-                                              image: "assets/foodtrack.png",
-                                              htitle: fetchlocale(context).flog,
-                                              ontap: () {
-                                                navigationSlide(
-                                                    context, FoodLogList());
-                                              },
-                                              bottom: Apptextwidget(
-                                                  '${fetchlocale(context).clintake} - ${foodctrl.foodcal??"0"} ${fetchlocale(context).kcal}',
-                                                  //"Calorie ${foodctrl.foodcal} kcal",
-                                                  style: TxtStls.mynewstyle)),
-                                                   mynewdashcard(
-                                              image: "assets/fatigue.jpg",
-                                              htitle: fetchlocale(context)
-                                                  .fatigescore,
-                                              ontap: () {
-                                                 assment.fatiguelist.isEmpty
+                                      mynewdashcard(
+                                          image: "assets/sleepscale.png",
+                                          htitle:
+                                              fetchlocale(context).sleepscore,
+                                          ontap: () {
+                                            assment.sleeplist.isEmpty
                                                 ? navigationSlide(context,
                                                     const Calculatordasboard())
-                                                : navigationSlide(
-                                                    context, const Fatiguelonglist());
-                                              },
-                                              bottom: Apptextwidget(
-                                                assment.fatiguelist.isEmpty
-                                                    ? ""
-                                                    : "${fetchlocale(context).youare} ${assment.handlevalue(assment.fatiguelist[0].fatiguescore) ? fetchlocale(context).not : ""} ${fetchlocale(context).leveltext}",
-                                                // "you are ${assment.handlevalue(assment.fatiguelist[0].fatiguescore) ? "not" : ""} experiencing clinically \nsignificant fatigue level.",
-                                                style: TxtStls.stl13,
-                                              ),
-                                            ),
-                                        ],
-                                      )),
-                                      Expanded(
-                                        child: Column(
-                                          children: [
-                                           mynewdashcard(
-                                              image: "assets/sleepscale.png",
-                                              htitle: fetchlocale(context)
-                                                  .sleepscore,
-                                              ontap: () {
-                                                assment.sleeplist.isEmpty
-                                                    ? navigationSlide(context,
-                                                        const Calculatordasboard())
-                                                    : navigationSlide(context,
-                                                        const Sleeplonglist());
-                                              },
-                                              bottom: Apptextwidget(
-                                                  assment.sleeplist.isEmpty
-                                                      ? ""
-                                                      : "${assment.checkriskscore(context, int.parse(assment.sleeplist[0].sleepscore!))}",
-                                                  style: TxtStls.mynewstyle)),
-                                            mynewdashcard(
-                                                image: "assets/hivassesment.jpg",
-                                                htitle: fetchlocale(context).hivasesquestiona,
-                                                ontap: () {
-                                                  assment.adherlist.isEmpty
-                                                      ? navigationSlide(context,
-                                                          const Calculatordasboard())
-                                                      : navigationSlide(context,
-                                                          const Hivlonglist());
-                                                },
-                                                bottom: Apptextwidget(
-                                                    "",
-                                                    style: TxtStls.mynewstyle)),
-                                          ],
-                                        ),
-                                      )
+                                                : navigationSlide(context,
+                                                    const Sleeplonglist());
+                                          },
+                                          bottom: Apptextwidget(
+                                              assment.sleeplist.isEmpty
+                                                  ? ""
+                                                  : "${assment.checkriskscore(context, int.parse(assment.sleeplist[0].sleepscore!))}",
+                                              style: TxtStls.mynewstyle)),
+                                      mynewdashcard(
+                                          image: "assets/hivassesment.jpg",
+                                          htitle: fetchlocale(context)
+                                              .hivasesquestiona,
+                                          ontap: () {
+                                            assment.adherlist.isEmpty
+                                                ? navigationSlide(context,
+                                                    const Calculatordasboard())
+                                                : navigationSlide(context,
+                                                    const Hivlonglist());
+                                          },
+                                          bottom: Apptextwidget("",
+                                              style: TxtStls.mynewstyle)),
                                     ],
                                   ),
-                                ),
-                              ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
                         // Risk Score
                         SliverPadding(
                           padding: const EdgeInsets.symmetric(

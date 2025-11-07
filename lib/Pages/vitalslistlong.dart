@@ -44,7 +44,8 @@ class _VitalListState extends State<VitalList> {
                 title: buildWeekSelectormod(
                     date: ctrl.datetime,
                     arrowback: () {
-                      var date = ctrl.datetime.subtract(const Duration(days: 7));
+                      var date =
+                          ctrl.datetime.subtract(const Duration(days: 7));
                       ctrl.chnagedate(date);
                       // setState(() {
                       //   // _dateTime = _dateTime =
@@ -257,152 +258,155 @@ class _VitalListState extends State<VitalList> {
 
 CrossFadeState crossFadeState = CrossFadeState.showFirst;
 Widget checkui(conext, Vitalmodel model) {
-  return Consumer<Vitalscontroller>(
-    builder: (context,ctrl,child) {
-      return StatefulBuilder(builder: (conext, set) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Visibility(
-                  visible:ctrl.getallvitals.where((ele)=>ele.recordType=="Scan").isNotEmpty,
-                  child: ElevatedButton.icon(
-                      style: ElevatedButton.styleFrom(backgroundColor: scaffoldbgcol),
-                      onPressed: () async {
-                        final ctrl =
-                            Provider.of<Authcontroller>(conext, listen: false);
-                        //commonlauncth(url: "https://baithnabot.tribandtech.com:7879/superset/dashboard/32/?native_filters_key=WgZdFDrwksD8nBOMGWplFHAJq5BChMRWJFOZyC3U8cCfDtCn2atMfKsEUSNpTlif&userid=${await ctrl.fethuserid()}&standalone=3");
-                        navigationSlide(
-                            conext, Vitalgraph(id: await ctrl.fethuserid()));
+  return Consumer<Vitalscontroller>(builder: (context, ctrl, child) {
+    return StatefulBuilder(builder: (conext, set) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Visibility(
+                visible: ctrl.getallvitals
+                    .where((ele) => ele.recordType == "Scan")
+                    .isNotEmpty,
+                child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: scaffoldbgcol),
+                    onPressed: () async {
+                      final ctrl =
+                          Provider.of<Authcontroller>(conext, listen: false);
+                      //commonlauncth(url: "https://baithnabot.tribandtech.com:7879/superset/dashboard/32/?native_filters_key=WgZdFDrwksD8nBOMGWplFHAJq5BChMRWJFOZyC3U8cCfDtCn2atMfKsEUSNpTlif&userid=${await ctrl.fethuserid()}&standalone=3");
+                      navigationSlide(
+                          conext, Vitalgraph(id: await ctrl.fethuserid()));
+                    },
+                    icon: Icon(
+                      Icons.timeline,
+                      color: hintClr,
+                    ),
+                    label: Apptextwidget(
+                      fetchlocale(conext).viewtrends,
+                      style: TxtStls.labelStl,
+                    )),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        set(() {
+                          if (crossFadeState == CrossFadeState.showFirst) {
+                            crossFadeState = CrossFadeState.showSecond;
+                          } else {
+                            crossFadeState = CrossFadeState.showFirst;
+                          }
+                        });
                       },
                       icon: Icon(
-                        Icons.timeline,
-                        color: hintClr,
-                      ),
-                      label: Apptextwidget(
-                        fetchlocale(conext).viewtrends,
-                        style: TxtStls.labelStl,
+                        crossFadeState == CrossFadeState.showFirst
+                            ? Icons.grid_on
+                            : Icons.layers,
+                        color: scaffoldbgcol,
                       )),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          set(() {
-                            if (crossFadeState == CrossFadeState.showFirst) {
-                              crossFadeState = CrossFadeState.showSecond;
-                            } else {
-                              crossFadeState = CrossFadeState.showFirst;
-                            }
-                          });
-                        },
-                        icon: Icon(
-                          crossFadeState == CrossFadeState.showFirst
-                              ? Icons.grid_on
-                              : Icons.layers,
-                          color: scaffoldbgcol,
-                        )),
-                    TextButton(
-                        onPressed: () {
-                          navigationSlide(conext, VitalList());
-                        },
-                        child: Apptextwidget(
-                          fetchlocale(conext).viewall,
-                          style: TxtStls.wstl12,
-                        )),
-                  ],
-                ),
-              ],
-            ),
-            appspace(h: 10),
-            labelhead(h: model.height, w: model.weight, bmi: model.bmi),
-            AnimatedCrossFade(
-                firstChild: SizedBox(
-                  height: genratemediaquery(conext).size.height / 3.5,
-                  width: double.infinity,
-                  child: FlutterCarousel(
-                    options: FlutterCarouselOptions(
-                      viewportFraction:
-                          checkscreenwidth(genratemediaquery(conext).size.width) ==
-                                  "Small"
-                              ? 0.5
-                              : checkscreenwidth(
-                                          genratemediaquery(conext).size.width) ==
-                                      "Medium"
-                                  ? 0.35
-                                  : 0.16,
-                      autoPlayAnimationDuration: const Duration(milliseconds: 200),
-                      autoPlayInterval: const Duration(seconds: 2),
-                      autoPlay: true,
-                      showIndicator: true,
-                      slideIndicator: CircularWaveSlideIndicator(),
-                    ),
-                    items: formatlist(model)
+                  TextButton(
+                      onPressed: () {
+                        navigationSlide(conext, VitalList());
+                      },
+                      child: Apptextwidget(
+                        fetchlocale(conext).viewall,
+                        style: TxtStls.wstl12,
+                      )),
+                ],
+              ),
+            ],
+          ),
+          appspace(h: 10),
+          labelhead(h: model.height, w: model.weight, bmi: model.bmi),
+          AnimatedCrossFade(
+              firstChild: SizedBox(
+                height: genratemediaquery(conext).size.height / 3.5,
+                width: double.infinity,
+                child: FlutterCarousel(
+                  options: FlutterCarouselOptions(
+                    viewportFraction: checkscreenwidth(
+                                genratemediaquery(conext).size.width) ==
+                            "Small"
+                        ? 0.5
+                        : checkscreenwidth(
+                                    genratemediaquery(conext).size.width) ==
+                                "Medium"
+                            ? 0.35
+                            : 0.16,
+                    autoPlayAnimationDuration:
+                        const Duration(milliseconds: 200),
+                    autoPlayInterval: const Duration(seconds: 2),
+                    autoPlay: true,
+                    showIndicator: true,
+                    slideIndicator: CircularWaveSlideIndicator(),
+                  ),
+                  items: formatlist(model)
                       .where((ele) =>
                           ele["value"] != null && ele["value"] != "null")
                       .toList()
-                        .map((e) => vitalCard(
-                              conext,
-                              radius: 90.0,
-                              stroke: 20.0,
-                              col: e["col"],
-                              title: fethvitalsdata(conext, e["title"]),
-                              label: e["title"],
-                              value: e["value"],
-                              confidence: e["confidence"],
-                              url: e["image"],
-                              level: e["level"],
-                              levelcol: e["levelcol"],
-                            ))
-                        .toList(),
-                  ),
+                      .map((e) => vitalCard(
+                            conext,
+                            radius: 90.0,
+                            stroke: 20.0,
+                            col: e["col"],
+                            title: fethvitalsdata(conext, e["title"]),
+                            label: e["title"],
+                            value: e["value"],
+                            confidence: e["confidence"],
+                            url: e["image"],
+                            level: e["level"],
+                            levelcol: e["levelcol"],
+                          ))
+                      .toList(),
                 ),
-                secondChild: GridView.builder(
-                  itemCount: formatlist(model)
-                      .where((ele) =>
-                          ele["value"] != null && ele["value"] != "null")
-                      .toList().length,
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount:
-                          checkscreenwidth(genratemediaquery(conext).size.width) ==
-                                  "Small"
-                              ? 2
-                              : checkscreenwidth(
-                                          genratemediaquery(conext).size.width) ==
-                                      "Medium"
-                                  ? 4
-                                  : 5,
-                      mainAxisSpacing: 5,
-                      crossAxisSpacing: 5,
-                      childAspectRatio: 0.8),
-                  itemBuilder: (_, i) {
-                    var data = formatlist(model)
+              ),
+              secondChild: GridView.builder(
+                itemCount: formatlist(model)
+                    .where(
+                        (ele) => ele["value"] != null && ele["value"] != "null")
+                    .toList()
+                    .length,
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: checkscreenwidth(
+                                genratemediaquery(conext).size.width) ==
+                            "Small"
+                        ? 2
+                        : checkscreenwidth(
+                                    genratemediaquery(conext).size.width) ==
+                                "Medium"
+                            ? 4
+                            : 5,
+                    mainAxisSpacing: 5,
+                    crossAxisSpacing: 5,
+                    childAspectRatio: 0.8),
+                itemBuilder: (_, i) {
+                  var data = formatlist(model)
                       .where((ele) =>
                           ele["value"] != null && ele["value"] != "null")
                       .toList()[i];
-                    return vitalCard(conext,
-                          col: data["col"],
-                          title:fethvitalsdata(conext, data["title"]),
-                          confidence: data["confidence"],
-                          label: data["title"],
-                          value: data["value"],
-                          url: data["image"],
-                          level: data["level"],
-                          levelcol: data["levelcol"]);
-                  },
-                ),
-                crossFadeState: crossFadeState,
-                duration: const Duration(milliseconds: 100)),
-          ],
-        );
-      });
-    }
-  );
+                  return vitalCard(conext,
+                      col: data["col"],
+                      title: fethvitalsdata(conext, data["title"]),
+                      confidence: data["confidence"],
+                      label: data["title"],
+                      value: data["value"],
+                      url: data["image"],
+                      level: data["level"],
+                      levelcol: data["levelcol"]);
+                },
+              ),
+              crossFadeState: crossFadeState,
+              duration: const Duration(milliseconds: 100)),
+        ],
+      );
+    });
+  });
 }
 /*
 Column(
@@ -505,7 +509,7 @@ Widget formatvitals(context, Vitalmodel viatal) {
                   var data = formatlist(viatal)[i];
                   return vitalCard(context,
                       col: data["col"],
-                      title:fethvitalsdata(context, data["title"]),
+                      title: fethvitalsdata(context, data["title"]),
                       label: data["title"],
                       value: data["value"],
                       url: data["image"],
@@ -544,8 +548,8 @@ List formatlist(Vitalmodel viatal) {
         "title": "Respiration Rate",
         "value": viatal.respirationRate,
         "image": "respirationrate.png",
-        "levelcol":
-            Risckscorecolours.calculatebrathingrate(val: viatal.respirationRate),
+        "levelcol": Risckscorecolours.calculatebrathingrate(
+            val: viatal.respirationRate),
         "level": viatal.respirationlevel,
         "confidence": viatal.breatheconfidence ?? "N/A"
       },
@@ -564,8 +568,7 @@ List formatlist(Vitalmodel viatal) {
         "value": viatal.bloodPressure,
         "image": "bloodPressure.png",
         "levelcol": Risckscorecolours.calculatebp(
-            val: viatal.bloodPressure?.split("/")[0]
-            ),
+            val: viatal.bloodPressure?.split("/")[0]),
         "level": viatal.bloodpressurelevel,
       },
       // {
@@ -578,7 +581,8 @@ List formatlist(Vitalmodel viatal) {
         "col": const Color(0xFFFAFAE0),
         "title": "Stress Index",
         "value": viatal.stressIndex,
-        "levelcol": Risckscorecolours.rsiccolstressvalue(val: viatal.stressLevel),
+        "levelcol":
+            Risckscorecolours.rsiccolstressvalue(val: viatal.stressLevel),
         "level": viatal.stressLevel,
         "image": "stressindex.png"
       },
@@ -675,14 +679,19 @@ List formatlist(Vitalmodel viatal) {
 }
 
 Widget labelhead({h, w, bmi}) {
+  final wLbs = calculateWeight(val: w, inputForm: 'kg', outputForm: 'lb');
+  final hFtIn =
+      calculateHeight(val: h, inputForm: 'cms', outputForm: 'feet/inch');
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceAround,
     children: [
       label(
         icon: FontAwesomeIcons.weightScale,
-        value: "$w kg",
+        value: "$wLbs lbs",
       ),
-      label(icon: const AssetImage("assets/Vitals/height.png"), value: "$h cm"),
+      label(
+          icon: const AssetImage("assets/Vitals/height.png"),
+          value: "$hFtIn feet/inch"),
       label(icon: const AssetImage(bmiicon), value: bmi),
     ],
   );

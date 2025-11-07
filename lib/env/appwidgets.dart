@@ -1870,9 +1870,16 @@ Widget questionAnswer(context,
   );
 }
 
-Widget dropdowndynamic({hint, val, list, onchnage, validate = false, onval,AutovalidateMode? validatemode}) {
+Widget dropdowndynamic(
+    {hint,
+    val,
+    list,
+    onchnage,
+    validate = false,
+    onval,
+    AutovalidateMode? validatemode}) {
   return DropdownButtonFormField2(
-    autovalidateMode: validatemode,
+      autovalidateMode: validatemode,
       hint: Apptextwidget(
         hint ?? "",
         style: TxtStls.hintStl,
@@ -1884,13 +1891,14 @@ Widget dropdowndynamic({hint, val, list, onchnage, validate = false, onval,Autov
       value: val,
       items: list,
       validator: validate
-          ? onval??(l) {
-              if (l == null) {
-                return "";
-              } else {
-                return null;
+          ? onval ??
+              (l) {
+                if (l == null) {
+                  return "";
+                } else {
+                  return null;
+                }
               }
-            }
           : null,
       onChanged: onchnage);
 }

@@ -26,8 +26,8 @@ class Authcontroller extends ChangeNotifier {
   bool isVisible = true;
   bool isconfirmVisible = true;
 
-  var metricheight = "cms";
-  var merticweight = "kg";
+  var metricheight = "feet/inch";
+  var merticweight = "lb";
 
   var feet;
   void changefeet(val) {
@@ -197,8 +197,8 @@ class Authcontroller extends ChangeNotifier {
     currentorganization = 1;
     feet = null;
     inch = null;
-    metricheight = "cms";
-    merticweight = "kg";
+    metricheight = "feet/inch";
+    merticweight = "lb";
     //doctorslist.clear();
     // hospitalist.clear();
     _userData = null;
@@ -800,9 +800,10 @@ class Authcontroller extends ChangeNotifier {
 
   void assigndata() {
     try {
-      dobcontroller.text = (_userData?["dob"] != null 
-      ? dateformat(format: "dd-MM-yyy", vale: DateTime.parse(_userData!["dob"]))
-      : "");
+      dobcontroller.text = (_userData?["dob"] != null
+          ? dateformat(
+              format: "dd-MM-yyy", vale: DateTime.parse(_userData!["dob"]))
+          : "");
       gender = _userData?["gender"];
       chnagecureentorganization(userData?["organizationId"]);
       chnageroledid(_userData?["roleId"]);
@@ -832,8 +833,8 @@ class Authcontroller extends ChangeNotifier {
       } else {
         ageconteoller.clear();
       }
-      metricheight = _userData["heightUnit"] ?? "cms";
-      merticweight = _userData["weightUnit"] ?? "kg";
+      metricheight = _userData["heightUnit"] ?? "feet/inch";
+      merticweight = _userData["weightUnit"] ?? "lb";
       weightconteollerlbs = TextEditingController.fromValue(
           TextEditingValue(text: "${_userData?["metricWeight"] ?? ""}"));
       checkheight(

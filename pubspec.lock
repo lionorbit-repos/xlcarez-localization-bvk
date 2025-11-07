@@ -259,7 +259,7 @@ packages:
       path: "Plugins/flutter_barcode_scanner-master"
       relative: true
     source: path
-    version: "2.0.0+2"
+    version: "2.0.0"
   flutter_cache_manager:
     dependency: transitive
     description:

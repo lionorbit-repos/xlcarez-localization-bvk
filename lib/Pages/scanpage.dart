@@ -125,7 +125,6 @@ class _MeasurementScreenState extends State<MeasurementScreen> {
                   : smoker == "No"
                       ? 2
                       : 0);
-              
         },
         child: MyThemeGradient(
           child: Scaffold(
@@ -288,6 +287,9 @@ class _CameraPreviewState extends State<_CameraPreview> {
   Widget build(BuildContext context) {
     var sessionState = context
         .select<MeasurementModel, SessionState?>((model) => model.sessionState);
+    debugPrint('sesssion state');
+    debugPrint(sessionState?.toString());
+    debugPrint(SessionState.values.toString());
     if (sessionState == null || sessionState == SessionState.initializing) {
       return Container();
     }
