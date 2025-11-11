@@ -43,6 +43,12 @@ post_install do |installer|
     # Add this to set deployment target for all pods
     target.build_configurations.each do |config|
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
+      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [
+          '$(inherited)',
+          'PERMISSION_SENSORS=1',
+          'PERMISSION_CAMERA=1'
+      ]
+      
     end
   end
 end

@@ -55,7 +55,7 @@ Future postmethod({totalres = false, endpoint, body, header}) async {
 
 Future calpostmethod({totalres = false, endpoint, body, header}) async {
   try {
-    Uri url = Uri.parse("https://bluhealthapi.lionorbit.com/api/$endpoint");
+    Uri url = Uri.parse("https://api.xlcarez.com/api/$endpoint");
     final response = await http.post(url,
         body: jsonEncode(body), headers: header ?? await domainheaders());
     log(response.body);
@@ -87,7 +87,7 @@ Future calpostmethod({totalres = false, endpoint, body, header}) async {
   }
 }
 
-Future getmetod({totalres = false, endpoint, header}) async {
+Future getmetod({dynamic totalres = false, endpoint, header}) async {
   try {
     Uri url = Uri.parse("$baseurl$endpoint");
     final response =

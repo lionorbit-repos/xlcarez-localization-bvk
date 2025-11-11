@@ -206,7 +206,7 @@ class _RiskScoreViewState extends State<RiskScoreView> {
     );
   }
 
-  Widget diabitiesCard({image, header, required int score}) {
+  Widget diabitiesCard({dynamic image, dynamic header, required int score}) {
     // log(score.toString());
     return GestureDetector(
       onTap: () {
@@ -282,7 +282,7 @@ class _RiskScoreViewState extends State<RiskScoreView> {
     );
   }
 
-  String fetchvalue(index) {
+  String fetchvalue(dynamic index) {
     try {
       final vitalCtrl = Provider.of<Vitalscontroller>(context, listen: false);
       var results = vitalCtrl.vitalsData.toString().split(",");
@@ -292,7 +292,7 @@ class _RiskScoreViewState extends State<RiskScoreView> {
     }
   }
 
-  Widget cardioCard({image, header, required int score}) {
+  Widget cardioCard({dynamic image, dynamic header, required int score}) {
     return GestureDetector(
       onTap: () {
         navigationSlide(
@@ -363,7 +363,7 @@ class _RiskScoreViewState extends State<RiskScoreView> {
     );
   }
 
-  Widget stressCard({image, header, score,val}) {
+  Widget stressCard({dynamic image, dynamic header, dynamic score, dynamic val}) {
     return GestureDetector(
       onTap: () {
         navigationSlide(
@@ -437,7 +437,7 @@ class _RiskScoreViewState extends State<RiskScoreView> {
     );
   }
 
-  Widget bmiCard({image, header, score, val}) {
+  Widget bmiCard({dynamic image, dynamic header, dynamic score, dynamic val}) {
     return GestureDetector(
       onTap: () {
         navigationSlide(
@@ -511,7 +511,7 @@ class _RiskScoreViewState extends State<RiskScoreView> {
     );
   }
 
-  Widget depressionCard({image, header, score}) {
+  Widget depressionCard({dynamic image, dynamic header, dynamic score}) {
     return GestureDetector(
       onTap: () {
         navigationSlide(
@@ -616,7 +616,7 @@ class _RiskScoreViewState extends State<RiskScoreView> {
     // ));
   }
 
-  Widget anemiaGradeCard({image, header, score}) {
+  Widget anemiaGradeCard({dynamic image, dynamic header, dynamic score}) {
     return GestureDetector(
       onTap: () {
         navigationSlide(
@@ -665,7 +665,7 @@ class _RiskScoreViewState extends State<RiskScoreView> {
   }
 }
 
-String diabitesRiskScoreLevel({score}) {
+String diabitesRiskScoreLevel({dynamic score}) {
   try {
     if (score >= 0 && score <= 6) {
       return "Low Risk";
@@ -683,7 +683,7 @@ String diabitesRiskScoreLevel({score}) {
   }
 }
 
-Color diabitesRiskScoreColor({score}) {
+Color diabitesRiskScoreColor({dynamic score}) {
   try {
     if (score >= 0 && score <= 6) {
       return Colors.lime;
@@ -701,7 +701,7 @@ Color diabitesRiskScoreColor({score}) {
   }
 }
 
-Widget cardioMeter({score}) {
+Widget cardioMeter({dynamic score}) {
   return SfRadialGauge(
     enableLoadingAnimation: true,
     axes: <RadialAxis>[
@@ -789,7 +789,7 @@ String cardioReturnText({score}) {
   }
 }
 
-Color cardioRetunColor({score}) {
+Color cardioRetunColor({dynamic score}) {
   try {
     if (score <= 5) {
       return Colors.lime;
@@ -807,7 +807,7 @@ Color cardioRetunColor({score}) {
   }
 }
 
-Color obesityRetunColor({score}) {
+Color obesityRetunColor({dynamic score}) {
   //log(score.toString());
   try {
     if (score <= 24.9) {
@@ -911,7 +911,7 @@ Widget stressMeter({score}) {
 //   }
 // }
 
-double stressValue({score}) {
+double stressValue({dynamic score}) {
   if (score == "Mild") {
     return 5.0;
   } else if (score == "Low" || score == "Normal") {
@@ -925,7 +925,7 @@ double stressValue({score}) {
   }
 }
 
-Widget bmiMeter({score}) {
+Widget bmiMeter({dynamic score}) {
   return SfRadialGauge(
     enableLoadingAnimation: true,
     axes: <RadialAxis>[
@@ -1000,7 +1000,7 @@ Widget bmiMeter({score}) {
   );
 }
 
-Color bmiColor({score}) {
+Color bmiColor({dynamic score}) {
   if (score > 0 && score <= 18.5) {
     return Colors.lime;
   } else if (score > 18.5 && score <= 24.9) {
@@ -1086,7 +1086,7 @@ Widget depressionMeter({score}) {
   );
 }
 
-Color depressionColor({score}) {
+Color depressionColor({dynamic score}) {
   try {
     if (score >= 0 && score <= 4) {
       return Colors.greenAccent;

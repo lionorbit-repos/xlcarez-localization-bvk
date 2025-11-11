@@ -50,6 +50,8 @@ const nodatafound = "assets/norecord.png";
 const baseurl = "https://api.xlcarez.com/api/";
 const asseturl = "https://api.xlcarez.com/assets/";
 
+
+
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 

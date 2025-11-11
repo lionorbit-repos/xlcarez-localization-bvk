@@ -5,7 +5,7 @@
   "packages": [
     {
       "name": "XLcarez",
-      "version": "2.0.0+2",
+      "version": "2.0.0+3",
       "dependencies": [
         "app_settings",
         "biosensesignal_flutter_sdk",

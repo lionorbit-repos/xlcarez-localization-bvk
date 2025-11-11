@@ -681,10 +681,10 @@ Widget weightField(context,
           : (weight) {
               if (weight!.isEmpty) {
                 return "";
-              } else if (double.parse(weight) < 88 ||
+              } else if (double.parse(weight) < 40 ||
                   double.parse(weight) > 330) {
                 return fetcherrortext(context,
-                    "Weight in lbs should be within the range of 88 to 330 lbs");
+                    "Weight in lbs should be within the range of 40 to 330 lbs");
               } else {
                 return null;
               }

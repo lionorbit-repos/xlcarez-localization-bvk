@@ -5,15 +5,15 @@ import 'dart:developer';
 import 'package:XLcarez/env/appexports.dart';
 
 class CalculationRiskController extends ChangeNotifier {
-  var daibetiesriskscore;
-  var cardioriskscore;
-  var obesityriskscore;
-  var anemiariskscore;
-  var depressionriskscore;
+  dynamic daibetiesriskscore;
+  dynamic cardioriskscore;
+  dynamic obesityriskscore;
+  dynamic anemiariskscore;
+  dynamic depressionriskscore;
 
   bool loading = false;
 
-  Future<void> calculatediabitiesrisk({dson}) async {
+  Future<void> calculatediabitiesrisk({dynamic dson}) async {
     try {
       loading = true;
       notifyListeners();
@@ -33,7 +33,7 @@ class CalculationRiskController extends ChangeNotifier {
     }
   }
 
-  Future<void> calculateanemiarisk({dson}) async {
+  Future<void> calculateanemiarisk({dynamic dson}) async {
     try {
       loading = true;
       notifyListeners();
@@ -53,7 +53,7 @@ class CalculationRiskController extends ChangeNotifier {
     }
   }
 
-  Future<void> calculatecardiorisk({dson}) async {
+  Future<void> calculatecardiorisk({dynamic dson}) async {
     try {
       loading = true;
       notifyListeners();
@@ -73,7 +73,7 @@ class CalculationRiskController extends ChangeNotifier {
     }
   }
 
-  Future<void> calculateobesityrisk({dson}) async {
+  Future<void> calculateobesityrisk({dynamic dson}) async {
     try {
       loading = true;
       notifyListeners();
@@ -93,7 +93,7 @@ class CalculationRiskController extends ChangeNotifier {
     }
   }
 
-  Future<void> calculatedepressionrisk({dson}) async {
+  Future<void> calculatedepressionrisk({dynamic dson}) async {
     try {
       loading = true;
       notifyListeners();
